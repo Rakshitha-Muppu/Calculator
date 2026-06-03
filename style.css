@@ -1,0 +1,80 @@
+
+ /* box-sizing defines whether padding and border are included in an element’s width and height or not.
+content-box → you add padding outside the box
+border-box → padding stays inside the box */
+*{
+    box-sizing: border-box;
+    
+}
+/* display: flex is used because alignment properties like justify-content and align-items work only in flex containers. */
+body {
+  margin: 0; /* Because the browser adds default margin to the body, and margin: 0 removes it */
+  background-color: rgb(33, 33, 33);
+}
+h2{
+    color: white;
+    text-align: center;
+    padding-top: 30px;
+}
+.container{
+    /* so the calculator can be perfectly centered by display : flex and other two center properties.*/
+  display: flex;
+  flex-direction: column; /* this makes heading and box vertical direction */
+  justify-content: center;  /* center left–right */
+  align-items: center;       /* center top–bottom */
+  min-height: 100vh;         /* full page height */
+}
+.box{
+    background-color: black;
+    width:200px;
+    height: 345px;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+}
+#input{
+    width:100%;
+    height:45px;
+    margin-bottom: 30px;
+    text-align: right;
+    background-color: rgb(76, 75, 75);
+    font-size: 25px;
+}
+/* .row a grid conatiner  (parent)
+  button ->children (grid items)
+  The moment a parent becomes display: grid:
+ all its direct children are placed inside grid cells.
+ Parent decides the layout
+Child decides its own look*/
+.row{
+    display:grid;
+    grid-template-columns: repeat(4,1fr);  
+    gap:10px;
+    margin-bottom: 8px;
+
+}
+.row button{
+    height: 40px;
+    border-radius: 50%;
+    font-size: 14px;
+    cursor: pointer;
+}
+button:active{
+    transform: translateY(2px);
+}
+.special{
+    background-color: orange;
+}
+#equalbtn{
+    background-color: rgb(238, 199, 127);
+}
+/*You don’t want input to be part of the button grid, only buttons inside each row. */
+/*Key takeaway:
+
+You can make .box a grid, but then:
+
+You must carefully place input and each button using grid-column / grid-row
+
+Layout becomes less intuitive and harder to maintain
+
+Using .row as grid for each 4-button row → simpler, readable, scalable */
